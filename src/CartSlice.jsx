@@ -19,11 +19,16 @@ export const CartSlice = createSlice({
         }
       },
 
-    removeItem: (state, action) => {
+    removeItem: (state, action) => {const itemToDecrease = state.cartItems.find(item => item.id === action.payload);
+        if (itemToDecrease && itemToDecrease.quantity > 1) {
+          itemToDecrease.quantity -= 1;
+        }
     },
-    updateQuantity: (state, action) => {
-
     
+    updateQuantity: (state, action) => {const itemToIncrease = state.cartItems.find(item => item.id === action.payload);
+        if (itemToIncrease) {
+          itemToIncrease.quantity += 1;
+        }
     },
   },
 });

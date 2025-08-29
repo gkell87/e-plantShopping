@@ -4,7 +4,7 @@ import CartItem from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 
-function ProductList(onHomeClick) {
+function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cartItems);
     const [showCart, setShowCart] = useState(false);

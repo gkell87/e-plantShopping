@@ -264,13 +264,10 @@ function ProductList(props) {
         setShowCart(false);
     };
 
-    const handleAddToCart = (plant) => {
-        dispatch(addItem(plant)); // Dispatch the action to add the product to the cart (Redux action)
-        setAddedToCart((prevState) => ({ // Update the local state to reflect that the product has been added
-          ...prevState, // Spread the previous state to retain existing entries
-          [plant.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
-        }));
-      };
+       const handleAddToCart = (item) => {
+        console.log("clicked");
+        dispatch(addItem(item));
+    };
 
     return (
         <div>

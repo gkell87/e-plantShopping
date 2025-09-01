@@ -19,7 +19,7 @@ function ProductList(props) {
     const handleAddToCart = (item) => {
         console.log("clicked");
         dispatch(addItem(item));
-        if (buttonText === "Add to Cart") {
+        if (product-button === "Add to Cart") {
             setButtonText("added");
           } else {
             setButtonText("Add to Cart");

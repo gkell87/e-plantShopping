@@ -17,13 +17,14 @@ function ProductList(props) {
         return cartItems.some((item) => item.name === itemName);
     }
     const handleAddToCart = (item) => {
-        if (buttonText === "Add to Cart") {
-            setButtonText("Added");
-          } else {
-            setButtonText("Add to Cart");
-          };
         console.log("clicked");
         dispatch(addItem(item));
+        if (buttonText === "Add to Cart") {
+            setButtonText("added");
+          } else {
+            setButtonText("Add to Cart");
+          }
+        };
     }
 
     const totalItems = () => {

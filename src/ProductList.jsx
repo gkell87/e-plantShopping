@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
-import {addItem} from './CartSlice';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from './CreateSlice';
 function ProductList(props) {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -12,9 +11,18 @@ function ProductList(props) {
     const cartItems=useSelector(state => state.cart.items);
     console.log(cartItems);
     // setCart(cartItems);
-    useEffect(() => {
-        
-    }, []);
+    useEffect(() => {}, []);
+    
+    const alreadyInCart = (itemName) => {
+        return cartItems.some((item) => item.name === itemName);
+    }
+    const handleAddToCart = (item) => {
+        console.log("clicked");
+        dispatch(addItem(item));
+    }
+    const totalItems = () => {
+        return cartItems.reduce((total, item) => total + item.quantity, 0);
+    }
 
     const plantsArray = [
         {
@@ -244,11 +252,6 @@ function ProductList(props) {
         textDecoration: 'none',
     }
 
-    const handleHomeClick = (e) => {
-        e.preventDefault();
-        onHomeClick();
-    };
-
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -258,16 +261,12 @@ function ProductList(props) {
         setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
         setShowCart(false); // Hide the cart when navigating to About Us
     };
-
+    
     const handleContinueShopping = (e) => {
+        console.log("clicked");
         e.preventDefault();
         setShowCart(false);
-    };
-
-       const handleAddToCart = (item) => {
-        console.log("clicked");
-        dispatch(addItem(item));
-    };
+      };
 
     return (
         <div>

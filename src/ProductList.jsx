@@ -23,7 +23,6 @@ function ProductList(props) {
             setButtonText("added");
           } else {
             setButtonText("Add to Cart");
-          }
         };
     }
 

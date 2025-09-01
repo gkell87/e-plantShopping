@@ -290,37 +290,28 @@ function ProductList(props) {
                 </div>
             </div>
             {!showCart ? (
-                <div className="product-grid">
-                    <br></br>
-                    {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
-                    <div key={index}> {/* Unique key for each category div */}
-                        <h1>
-                        <div>{category.category}</div> {/* Display the category name */}
-                        </h1>
-                        <div className="product-list"> {/* Container for the list of plant cards */}
-                        {category.plants.map((plant, plantIndex) => ( // Loop through each plant in the current category
-                            <div className="product-card" key={plantIndex}> {/* Unique key for each plant card */}
-                            <img 
-                                className="product-image" 
-                                src={plant.image} // Display the plant image
-                                alt={plant.name} // Alt text for accessibility
-                            />
-                            <div className="product-title">{plant.name}</div> {/* Display plant name */}
-                            {/* Display other plant details like description and cost */}
-                            <div className="product-description">{plant.description}</div> {/* Display plant description */}
-                            <div className="product-cost">{plant.cost}</div> {/* Display plant cost */}
-                            <button style={{backgroundColor:alreadyInCart(plant.name)?"gray":"light green"}} disabled={alreadyInCart(plant.name)? true:false} onClick={()=>handleAddToCart({name:plant.name,cost:plant.cost,image:plant.image})} className='product-button'>Add to Cart</button>
-                            </div>
-                        ))}
-                        </div>
-                    </div>
-                    ))}
-                </div>
-            ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
-            )}
-        </div>
-    );
-}
-
-export default ProductList;
+                 <div className="product-grid">
+                 <br></br>
+                 {plantsArray.map((item)=><div className='mainCategoryDiv'> <h1>{item.category}</h1> 
+                 <div className="product-list">
+                 {item.plants.map((plant)=>
+                     <div className='product-card'>
+                         <img className='product-image' src={plant.image} alt={plant.name} />
+                         <h2>{plant.name}</h2>
+                         <p>{plant.description}</p>
+                         <p>{plant.cost}</p>
+                         <button style={{backgroundColor:alreadyInCart(plant.name)?"gray":"light green"}} disabled={alreadyInCart(plant.name)? true:false} onClick={()=>handleAddToCart({name:plant.name,cost:plant.cost,image:plant.image})} className='product-button'>Add to Cart</button>
+                     </div>)}
+                      </div>
+                 </div>)}
+     
+     
+             </div>
+      ) :  (
+         <CartItem onContinueShopping={handleContinueShopping}/>
+     )}
+         </div>
+         );
+     }
+     
+     export default ProductList;

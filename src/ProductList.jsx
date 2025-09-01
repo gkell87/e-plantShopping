@@ -18,8 +18,21 @@ function ProductList(props) {
     }
     const handleAddToCart = (item) => {
         console.log("clicked");
+        if (buttonText === "Add to Cart") {
+            setButtonText("added");
+        } else {
+            setButtonText("Add to Cart");
+        }
         dispatch(addItem(item));
     }
+
+    if (buttonText === "Click Me!") {
+      setButtonText("Clicked!");
+    } else {
+      setButtonText("Click Me!");
+    }
+
+    
     const totalItems = () => {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     }

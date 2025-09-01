@@ -21,7 +21,7 @@ function ProductList(props) {
             setButtonText("Added");
           } else {
             setButtonText("Add to Cart");
-          }
+          };
         console.log("clicked");
         dispatch(addItem(item));
     }

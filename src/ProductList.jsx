@@ -17,22 +17,15 @@ function ProductList(props) {
         return cartItems.some((item) => item.name === itemName);
     }
     const handleAddToCart = (item) => {
-        console.log("clicked");
         if (buttonText === "Add to Cart") {
-            setButtonText("added");
-        } else {
+            setButtonText("Added");
+          } else {
             setButtonText("Add to Cart");
-        }
+          }
+        console.log("clicked");
         dispatch(addItem(item));
     }
 
-    if (buttonText === "Click Me!") {
-      setButtonText("Clicked!");
-    } else {
-      setButtonText("Click Me!");
-    }
-
-    
     const totalItems = () => {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     }
